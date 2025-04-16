@@ -12,36 +12,40 @@ const ParticlesBackground = () => {
 
   return (
     <div className="absolute inset-0 w-full h-full">
-      {" "}
-      {/* Container essencial */}
       <Particles
         id="tsparticles"
         init={particlesInit}
         options={{
-          fullScreen: { enable: false }, // Desabilitado para usar o container do Tailwind
+          fullScreen: { enable: false },
           background: {
             color: {
-              value: "#0f0f0f", // Mudei para transparente
+              value: "#0f0f0f",
             },
           },
           particles: {
             number: {
-              value: 100, // Aumentei o número de partículas
+              value: 150, // Mais partículas
+              density: {
+                enable: true,
+                area: 800,
+              },
             },
             color: {
-              value: "#ffffff", // Azul mais visível (Tailwind blue-500)
+              value: "#ffffff",
             },
             opacity: {
-              value: 0.7, // Aumentei a opacidade
+              value: 0.6,
+              random: true, // Opacidade aleatória
             },
             size: {
-              value: 2,
-              random: true,
+              value: { min: 1, max: 3 }, // Tamanhos variados
             },
             move: {
               enable: true,
-              speed: 0.7, // Reduzi a velocidade
-              direction: "bottom",
+              speed: { min: 1, max: 3 }, // Velocidade aleatória e mais rápida
+              direction: "none", // Sem direção fixa
+              random: true,
+              straight: false, // Movimento mais "solto"
               outModes: {
                 default: "out",
               },
@@ -49,7 +53,7 @@ const ParticlesBackground = () => {
           },
           detectRetina: true,
         }}
-        className="w-full h-full" // Garante o tamanho
+        className="w-full h-full"
       />
     </div>
   );
